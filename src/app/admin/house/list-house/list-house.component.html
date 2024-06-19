@@ -1,0 +1,65 @@
+<div class="container">
+    <h1 class="mat-h1"> 
+        <button routerLink="../" routerLinkActive="active" mat-icon-button matTooltip="Retour">
+            <mat-icon>arrow_back</mat-icon></button>
+            Manage House
+    </h1>
+    <div class="col-l-12 col-md-12 col-sm-12">
+        <h2 class="mat-h2">Liste of House</h2>
+        <div class="d-flex justify-content-between mb-3">
+            <button class="box-shadow" matTooltip="add new house" (click)="addNewHouse()" mat-icon-button
+                color="primary"><mat-icon>add</mat-icon></button>
+            <span>Total house </span>
+        </div>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <!-- houseType Column -->
+                <ng-container matColumnDef="houseType">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> House Type </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.houseType }} </td>
+                </ng-container>
+
+                <!-- rent price Column -->
+                <ng-container matColumnDef="rentPrice">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Rent Price </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.rentPrice | currency }} </td>
+                </ng-container>
+
+                <!-- numBedrooms Column -->
+                <ng-container matColumnDef="numBedrooms">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Bed rooms </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.numBedrooms }} </td>
+                </ng-container>
+
+                <!-- numBathrooms Column -->
+                <ng-container matColumnDef="numBathrooms">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Bath Room </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.numBathrooms }} </td>
+                </ng-container>
+
+
+                <!-- Address Column -->
+                <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef>Addresse</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
+                </ng-container>
+
+                <!-- City Column -->
+                <ng-container matColumnDef="city">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.city }} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="Onselected(row)"></tr>
+            </table>
+
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+        <!-- House List end-->
+    </div>
+</div>

@@ -1,0 +1,64 @@
+body {
+    background: lightcyan;
+}
+
+#like {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+/* like */
+.unfavorite {
+    color: #161515;
+}
+
+.favorite {
+    color: #f44336;
+}
+
+/* price */
+.price {
+    color: #0da75f;
+    font-weight: 500;
+}
+
+/* CUSTORM CSS */
+.custorm-card {
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px #333;
+}
+
+.custorm-card img {
+    width: 100%;
+    display: block;
+    border-radius: 15px 15px 0 0;
+
+}
+
+.custorm-btn {
+    text-transform: capitalize;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px #333;
+    padding: 8px;
+}
+
+.custorm-btn:hover {
+    box-shadow: none;
+    border: 1px solid #4db0f7;
+}
+
+.demo-paginator{
+    margin-top: 20px;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px #333;
+    padding: 0px 0px 10px 0px;
+}
+

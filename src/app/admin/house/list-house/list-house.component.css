@@ -1,0 +1,8 @@
+.box-shadow{
+    box-shadow: 5px 5px 10px #333;
+}
+
+
+@media screen and (max-width: 575px) {
+    
+}

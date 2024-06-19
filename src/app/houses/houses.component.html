@@ -1,0 +1,70 @@
+<!-- <div>{{ housePage$ | async | json }}</div> -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <h4>Select type of house</h4>
+            <form [formGroup]="filterForm">
+                <mat-form-field>
+                    <mat-label>Type of house</mat-label>
+                     <mat-select (ngModelChange)="filterHouseByType($event)" formControlName="houseType">
+                        <mat-option value="ROOM">Room</mat-option>
+                        <mat-option value="APARTMENT">Apartement</mat-option>
+                        <mat-option value="STUDIO">Studio</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+            </form>
+        </div>
+    </div>
+    <ng-container *ngIf="(housePage$ | async) as appState" [ngSwitch]="appState.dataState">
+        <ng-container *ngSwitchCase="DataState.LOADING_STATE">
+            <div class="col-md-12 single-note-item text-center">
+                <div class="spinner-border text-info" role="status"></div>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="DataState.LOADED_STATE">
+
+            <div class="row">
+                <h3 class="mat-h3">Houses For Rent</h3>
+                <div class="col-md-4 mb-3" *ngFor="let house of appState.appData.data.houses.content; let i = index">
+                    <div class="card custorm-card mb-2">
+                        <button type="button" mat-icon-button aria-label="favorie" id="like" matTooltip="Like">
+                            <mat-icon>favorite</mat-icon>
+                        </button>
+                        <img src="" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h2 class="card-title">{{house.houseType }}</h2>
+                            <p class="card-text d-flex justify-content-end "><small class="price">{{house.rentPrice |
+                                    currency }}</small></p>
+                            <p><mat-icon color="warn">location_on</mat-icon>{{house.address}}</p>
+                            <button class="custorm-btn">Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="DataState.ERROR_STATE">
+            <div class="alert alert-danger">
+                {{ appState.error }}
+            </div>
+        </ng-container>
+    </ng-container>
+    <div class="row">
+        <div class="">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+                    [pageSize]="pageSize" [showFirstLastButtons]="showFirstLastButtons"
+                    [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [hidePageSize]="hidePageSize"
+                    [pageIndex]="pageIndex" aria-label="Select page">
+                </mat-paginator>
+            </div>
+        </div>
+
+
+        <div class="demo-data">
+            <div> Output event: {{(pageEvent | json) || 'No events dispatched yet'}} </div>
+            <div> getNumberOfPages: {{paginator.getNumberOfPages()}} </div>
+        </div>
+
+    </div>
+</div>

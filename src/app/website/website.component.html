@@ -1,0 +1,57 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>NDA'A</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="#" routerLinkActive="active" matTooltip="Home"> <mat-icon matListItemIcon>home</mat-icon> Home</a>
+      <a mat-list-item routerLink="#" matTooltip="connect with us"routerLinkActive="active"> <mat-icon matListItemIcon>login</mat-icon> Sign in</a>
+      <a mat-list-item routerLink="#" routerLinkActive="active"><mat-icon matListItemIcon>manage_accounts</mat-icon>
+        Become agent</a>
+      <a mat-list-item routerLink="#" routerLinkActive="active"><mat-icon matListItemIcon>info</mat-icon> About us</a>
+      <a mat-list-item routerLink="3" routerLinkActive="active"><mat-icon matListItemIcon>help</mat-icon>
+        Terms&service</a>
+      <hr>
+      <a mat-list-item routerLink="#" matTooltip="Like" routerLinkActive="active" ><mat-icon matListItemIcon>favorite</mat-icon>Like</a>
+      <a mat-list-item routerLink="#" matTooltip="Share with frinds" routerLinkActive="active"><mat-icon matListItemIcon>share</mat-icon>Share</a>
+      <hr>
+      <a mat-list-item routerLink="#" matTooltip="Faceboock" routerLinkActive="active"><mat-icon matListItemIcon><i
+            class="bi bi-facebook"></i></mat-icon>Faceboock</a>
+      <a mat-list-item routerLink="#" matTooltip="YouTube" routerLinkActive="active"><mat-icon matListItemIcon><i
+            class="bi bi-youtube"></i></mat-icon>Youtube</a>
+      <a mat-list-item routerLink="#" routerLinkActive="active" matTooltip="Instagram"><mat-icon matListItemIcon><i
+            class="bi bi-instagram"></i></mat-icon>Instagram</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>NDA'A</span>
+      <a routerLink="/admin" class="text-center text-uppercase fw-bold ms-4">Become Agent</a>
+      <div class="spacer"></div>
+      <button mat-icon-button class="facebook-icon" matTooltip="Faceboock">
+        <i class="bi bi-facebook"></i>
+      </button>
+      <button mat-icon-button class="youtube-icon" matTooltip="YouTube">
+        <i class="bi bi-youtube"></i>
+      </button>
+      <button mat-icon-button class="favorite-icon" matTooltip="Like" >
+        <i class="bi bi-heart-fill"></i>
+      </button>
+      <button mat-icon-button class="share-icon" matTooltip="Share with frinds">
+        <i class="bi bi-share-fill"></i>
+      </button>
+      <!-- user log -->
+      <button mat-icon-button [matMenuTriggerFor]="menu"> <i class="bi bi-person-fill"></i></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/login" routerLinkActive="active">Sing in</button>
+        <button mat-menu-item routerLink="/admin" routerLinkActive="active">Become agent</button>
+      </mat-menu>
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <app-houses></app-houses>
+  </mat-sidenav-content>
+</mat-sidenav-container>
